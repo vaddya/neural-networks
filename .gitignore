@@ -6,3 +6,5 @@
 *.gz
 *.ipynb_checkpoints
 __pycache__
+.*lof
+.*lot

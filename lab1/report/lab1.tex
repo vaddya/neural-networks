@@ -5,6 +5,7 @@
 \include{titlepage}
 
 \tableofcontents
+\newpage
 \listoffigures
 \newpage
 
@@ -61,7 +62,7 @@
 \begin{center}
 	\includegraphics[scale=1.1]{1_2_1}
 	\caption{Разбие с помощью множества прямых}
-	\label{fig:rs}
+	\label{fig:1_2_1}
 \end{center}
 \end{figure}
 
@@ -95,7 +96,7 @@
 \begin{center}
 	\includegraphics[width=\textwidth]{1_2_2}
 	\caption{Аналитическое разбиение}
-	\label{fig:rs}
+	\label{fig:1_2_2}
 \end{center}
 \end{figure}
 
@@ -131,7 +132,7 @@
 
 %5. Попытайтесь решить задачу распознавания путем обучения 1-слойного персептрона на множестве входных примеров. Проанализируйте полученный результат.
 
-Попробуем решить задачу распознование путем обучения 1-слойного персептрона. На рис. \ref{fig:1_5_1} изображено разбиение на 2 класса.
+Попробуем решить задачу распознование путем обучения 1-слойного персептрона. На рис. \ref{fig:1_5_1} изображено разбиение на 2 класса. Средняя ошибка при этом оказалась равна $0.4805$.
 
 \begin{figure}[H]
 \begin{center}
@@ -215,11 +216,11 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 \end{center}
 \end{figure}
 
-\subsection{1-слоный персептрон}
+\subsection{Решение с помощью 1-слойного персептрона}
 
 %5. Попробуйте обучить однослойный персептрон на Вашей функции, используя в качестве обучающей выборки фрагменты таблицы истинности. Проанализируйте результаты и посчитайте среднюю ошибку.	
 
-Попробуем решить задачу путем обучения 1-слойного персептрона. На рис. \ref{fig:2_5} изображено значние ошибки в процессе обучения. Видно что оно колеблется, следовательно процесс обучения не сходится.
+Попробуем решить задачу путем обучения 1-слойного персептрона. На рис. \ref{fig:2_5} изображено значние ошибки в процессе обучения. Видно что оно колеблется, следовательно процесс обучения не сходится. Средняя ошибка при этом оказалась равна $0.3750$.
 
 \begin{figure}[H]
 \begin{center}
@@ -275,13 +276,13 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 
 %3. Сгенерируйте схему командой gensim (net), проанализируйте ее и приведите в отчет.
 
-На рис. \ref{fig:3_2} изображена схема, полученная при помощи команды \verb+gensim+.
+На рис. \ref{fig:3_3} изображена схема, полученная при помощи команды \verb+gensim+.
 
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{3_2}
+	\includegraphics[width=0.8\textwidth]{3_3}
 	\caption{Схема сети}
-	\label{fig:3_2}
+	\label{fig:3_3}
 \end{center}
 \end{figure}
 
@@ -289,13 +290,13 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 
 %4. Проверьте правильность работы полученной НС путем построения разбиения плоскости на классы, которое реализует персептрон.
 
-На рис. \ref{fig:3_3} изображено разбиение случайных точек входного пространства на классы.
+На рис. \ref{fig:3_4} изображено разбиение случайных точек входного пространства на классы.
 
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{3_3}
+	\includegraphics[width=0.8\textwidth]{3_4}
 	\caption{Проверка в случайных точках входного пространства}
-	\label{fig:3_3}
+	\label{fig:3_4}
 \end{center}
 \end{figure}
 
@@ -303,23 +304,23 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 
 %5. Попытайтесь решить задачу распознавания путем обучения 1-слойного персептрона на множестве входных примеров. Для этого вначале сформируйте обучающую выборку необходимого объема. 
 
-Попробуем решить задачу распознование путем обучения 1-слойного персептрона. На рис. \ref{fig:3_4_1} изображено разбиение на 2 класса.
+Попробуем решить задачу распознование путем обучения 1-слойного персептрона. На рис. \ref{fig:3_5_1} изображено разбиение на 2 класса. Средняя ошибка при этом оказалась равна $0.5140$.
 
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{3_4_1}
+	\includegraphics[width=0.8\textwidth]{3_5_1}
 	\caption{Разбиение с помощью 1-слойного персептрона}
-	\label{fig:3_4_1}
+	\label{fig:3_5_1}
 \end{center}
 \end{figure}
 
-На рис. \ref{fig:3_4_2} изображено значние ошибки в процессе обучения. Видно что оно колеблется, следовательно процесс обучения не сходится.
+На рис. \ref{fig:3_5_2} изображено значние ошибки в процессе обучения. Видно что оно колеблется, следовательно процесс обучения не сходится.
 
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[width=0.8\textwidth]{3_4_2}
+	\includegraphics[width=0.8\textwidth]{3_5_2}
 	\caption{Значние ошибки в процессе обучения}
-	\label{fig:3_4_2}
+	\label{fig:3_5_2}
 \end{center}
 \end{figure}
 
@@ -335,7 +336,7 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 
 \begin{figure}[H]
 \begin{center}
-	\includegraphics[scale=1]{4_1}
+	\includegraphics[scale=0.8]{4_1}
 	\caption{Набор выходных и желаемых выходных образов}
 	\label{fig:4_1}
 \end{center}
@@ -346,42 +347,198 @@ x_1\ x_2\ \overline{x_3}\ x_4\ \overline{x_5}
 %1. Запишите аналитическое выражение для функции, реализующей Ваше разбиение плоскости на m классов. Постройте график с разбиением плоскости на m классов.
 %2. Реализуйте полученную функцию в форме 2-х или 3-х слойного персептрона net в Matlab. 
 
-\paragraph{Первый слой}
+Пронумеруем прямые и обединим и в фигуры. На рис. \ref{fig:4_2} прямые пронумерованы обозначены былым цветом.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.8]{4_2}
+	\caption{Прямые, разбивающие плоскость на классы}
+	\label{fig:4_2}
+\end{center}
+\end{figure}
+
+Тогда классы ограничены следующими прямыми:
+
+\begin{multicols}{4}
+\begin{enumerate}[label=\arabic*)]
+	\item 1, 2
+	\item 3, 4
+	\item 5, 6
+	\item 7, 8
+	\item 8, 9, 10
+	\item 2, 9, 11
+	\item 4, 11, 12
+	\item 6, 10, 12
+\end{enumerate}
+\end{multicols}
+
+Запишем уравнения прямых первого слоя сети:
+\begin{multicols}{2}
 \begin{enumerate}
 	\item $-2 x_1 + x_2 = 0 \rightarrow y_{1,1}$
-	\item $-0.5 x_1 - x_2 + 1 = 0 \rightarrow y_{1,2}$\\
+	\item $-0.5 x_1 - x_2 + 1 = 0 \rightarrow y_{1,2}$
 	\item $0.5 x_1 + x_2 - 1 = 0 \rightarrow y_{1,3}$
-	\item $-2 x_1 + x_2 + 1 = 0 \rightarrow y_{1,4}$\\
+	\item $-2 x_1 + x_2 + 1 = 0 \rightarrow y_{1,4}$
 	\item $2 x_1 - x_2 - 1 = 0 \rightarrow y_{1,5}$
-	\item $0.5 x_1 + x_2 - 0.5 = 0 \rightarrow y_{1,6}$\\
+	\item $0.5 x_1 + x_2 - 0.5 = 0 \rightarrow y_{1,6}$
 	\item $-0.5 x_1 - x_2 + 0.5 = 0 \rightarrow y_{1,7}$
-	\item $2 x_1 - x_2 = 0 \rightarrow y_{1,8}$\\
-	\item $-3 x_1 - x_2 + 2 = 0 \rightarrow y_{1,9}$
-	\item $-\frac{1}{3} x_1 + x_2 - \frac{1}{3} = 0 \rightarrow y_{1,10}$\\
-	\item $3 x_1 + x_2 - 2 = 0 \rightarrow y_{1,11}$\\
-	\item $\frac{1}{3} x_1 - x_2 + \frac{1}{3} = 0 \rightarrow y_{1,13}$
-	\item $-2 x_1 + x_2 + 1 = 0 \rightarrow y_{1,12}$\\
+	\item $2 x_1 - x_2 = 0 \rightarrow y_{1,8}$
+	\item $-\frac{1}{3} x_1 + x_2 - \frac{1}{3} = 0 \rightarrow y_{1,9}$
+	\item $-3 x_1 - x_2 + 2 = 0 \rightarrow y_{1,10}$
+	\item $3 x_1 + x_2 - 2 = 0 \rightarrow y_{1,11}$
+	\item $\frac{1}{3} x_1 - x_2 + \frac{1}{3} = 0 \rightarrow y_{1,12}$
 \end{enumerate}
+\end{multicols}
 
-\paragraph{Второй слой}
+Запишем уравнения выходного слоя сети:
+\begin{multicols}{2}
 \begin{enumerate}
-	\item 
-	%\item $y_{11} + y_{12} + y_{13} + y_{14} - 3.5 = 0 \rightarrow y_{21}$
-	%\item $y_{15} + y_{16} + y_{17} + y_{18} - 3.5 = 0 \rightarrow y_{22}$
+	\item $y_{1,1} + y_{1,2} - 1.5 = 0 \rightarrow y_{2,1}$
+	\item $y_{1,3} + y_{1,4} - 1.5 = 0 \rightarrow y_{2,2}$
+	\item $y_{1,5} + y_{1,6} - 1.5 = 0 \rightarrow y_{2,3}$
+	\item $y_{1,7} + y_{1,8} - 1.5 = 0 \rightarrow y_{2,4}$
+	\item $y_{1,8} + y_{1,9} + y_{1,10} - 2.5 = 0 \rightarrow y_{2,5}$
+	\item $y_{1,3} + y_{1,9} + y_{1,11} - 2.5 = 0 \rightarrow y_{2,6}$
+	\item $y_{1,4} + y_{1,11} + y_{1,12} - 2.5 = 0 \rightarrow y_{2,7}$
+	\item $y_{1,6} + y_{1,10} + y_{1,12} - 2.5 = 0 \rightarrow y_{2,8}$
 \end{enumerate}
-
-\paragraph{Третий слой}
-\begin{enumerate}
-	\item
-%	\item $y = y_{21} - 2 y_{22} - 0.5$
-\end{enumerate}
+\end{multicols}
 
 \subsection{Схема сети}
 
 %3. Сгенерируйте схему командой gensim (net), проанализируйте ее и приведите в отчет.
 
+На рис. \ref{fig:4_3} изображена схема, полученная при помощи команды \verb+gensim+.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{4_3}
+	\caption{Схема сети}
+	\label{fig:4_3}
+\end{center}
+\end{figure}
+
 \subsection{Проверка аналитического решения}
 
 %4. Проверьте правильность работы полученной НС путем построения разбиения плоскости на классы, которое реализует персептрон.
+
+На рис. \ref{fig:4_4} изображено разбиение случайных точек входного пространства на классы.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{4_4}
+	\caption{Проверка в случайных точках входного пространства}
+	\label{fig:4_4}
+\end{center}
+\end{figure}
+
+\section{Классификация данных на плоскости}
+
+\subsection{Генерация выборок}
+
+%1. Сгенерировать две выборки X1-Y1, X2-Y2, представляющих собой множество двух линейно разделимых и линейно-неразделимых классов на плоскости.
+
+На рис. \ref{fig:5_1_1} изображена выборка линейно-разделимых классов на плоскости.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_1_1}
+	\caption{Выборка линейно-разделимых классов на плоскости}
+	\label{fig:5_1_1}
+\end{center}
+\end{figure}
+
+На рис. \ref{fig:5_1_2} изображена выборка линейно-неразделимых классов на плоскости.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_1_2}
+	\caption{Выборка линейно-неразделимых классов на плоскости}
+	\label{fig:5_1_2}
+\end{center}
+\end{figure}
+
+\subsection{Решение с помощью 1-слойного перспетрона}
+
+В таблице \ref{tab:6_2_1} приведена сравнительная таблица, содержащая среднее количество эпох, требуемых перспетрону для достижения нулевой ошибки на первом наборе данных в зависимости от функций обучения. Из таблицы видно, что в среднем обучение происходило быстрее всего при обучении с нормализацией \verb+learnpn+ с применением последовательного случайного алгоритма обучения \verb+trainr+.
+
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Среднее количество эпох}
+	\label{tab:6_2_1}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		 & \verb+trainc+ & \verb+trainr+ & \verb+trainb+ \\
+		\hline
+		\verb+learnp+ & 15.4 & 4.6 & 11.0 \\
+		\hline
+		\verb+learnpn+ & 14.4 & 3.8 & 11.0 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table} 
+
+На рисунках \ref{fig:5_2_1} -- \ref{fig:5_2_3} изображены характеристики обучения в зависимости от номера эпохи для некоторого обучения с использованием \verb+learnpn+ и \verb+trainr+.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_2_1}
+	\caption{Динамика изменения весовых коэффициентов}
+	\label{fig:5_2_1}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_2_2}
+	\caption{Динамика (эволюция) прямых, реализуемых персептроном}
+	\label{fig:5_2_2}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_2_3}
+	\caption{Динамика значения ошибки}
+	\label{fig:5_2_3}
+\end{center}
+\end{figure}
+
+В таблице \ref{tab:6_2_2} приведена сравнительная таблица, содержащая среднее количество эпох, требуемых перспетрону для достижения ошибки $0.13$ на втором наборе данных в зависимости от функций обучения. Из таблицы видно, что в среднем обучение происходило быстрее всего при обучении с нормализацией \verb+learnpn+ с применением последовательного случайного алгоритма обучения \verb+trainr+. Средняя ошибка при этом оказалась равна $0.1292$.
+
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Среднее количество эпох}
+	\label{tab:6_2_2}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		 & \verb+trainc+ & \verb+trainr+ & \verb+trainb+ \\
+		\hline
+		\verb+learnp+ & 8.4 & 1.4 & 12.0 \\
+		\hline
+		\verb+learnpn+ & 12.2 & 1.0 & 12.0 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table} 
+
+На рис. \ref{fig:5_2_4} и \ref{fig:5_2_5} приведены примеры классификации с помощью 1-слойного персептрона после обучения.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_2_4}
+	\caption{Классификация линейно-разделимых классов на плоскости}
+	\label{fig:5_2_4}
+\end{center}
+\end{figure}
+\vspace{-1cm}
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{5_2_5}
+	\caption{Классификация линейно-неразделимых классов на плоскости}
+	\label{fig:5_2_5}
+\end{center}
+\end{figure}
+
+\section{Выводы}
+
+В данной работе были приобретены навыки построения и обучения персептронов для различных областей применения. Была изучена архитектура персептрона и специальные функции для создания персептрона. Была произведена как ручная настройка весов при помощи аналитического решения, так и использованы функции для обучения персептрона. 
 
 \end{document}

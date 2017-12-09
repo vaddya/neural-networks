@@ -1,18 +1,16 @@
 load('2.mat')
-P = double(P)
-T = double(T)
+P = double(P);
+T = double(T);
 
 net = newp([ 0 1; 0 1; 0 1; 0 1; 0 1 ], 1);
-
-net = init(net);
 
 net.trainFcn = 'trainr';
 net.layers{1}.transferFcn = 'hardlim'
 
-train(net, P', T')
+net = init(net);
 
-%sim(net, P_big')
+net = train(net, P', T')
+Y = sim(net, P');
+perform(net, T', Y)
 
 %gensim(net)
-
-sim(net, P')
