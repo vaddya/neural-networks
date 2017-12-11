@@ -30,15 +30,6 @@ function linear_newlind(P, T)
     saveas(gcf, '../../pics/1_2_2.png');
 end
 
-function [Ptrain, Ttrain, Ptest, Ttest] = split(P, T)
-    [Train, Test, ~] = dividerand([P; T], 0.7, 0.3, 0);
-
-    Ptrain = Train(1, :);
-    Ttrain = Train(2, :);
-    Ptest = Test(1, :);
-    Ttest = Test(1, :);
-end
-
 function plot_model(net, P, T)
     figure;
     hold on;
