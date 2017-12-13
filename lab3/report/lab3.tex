@@ -115,6 +115,8 @@ E = \begin{bmatrix}
 
 \section{Аппроксимация статических зависимостей}
 
+\subsection{Формирование обучающей и тестовой выборки}
+
 Сформируем обучающую и тестовую выборки на основе ранее созданных функций. На рис. \ref{fig:2_2} изображены сформированные выборки.
 \begin{figure}[H]
 \begin{center}
@@ -124,9 +126,13 @@ E = \begin{bmatrix}
 \end{center}
 \end{figure}
 
+\subsection{Инициализация и критерии останова обучения}
+
 Создадим нейронную сеть с одним скрытым слоем, содержащим 20 нейронов, и инициализируем ее с помощью случайных значений. Зададим ей основные параметры обучения.
 
 \lstinputlisting[linerange={28-37}]{lab3_2_1.m}
+
+\subsection{Обучение НС}
 
 Обучим нейронную сеть на обучающей выборке. На рис. \ref{fig:2_4} изображена зависимость ошибки от номера эпохи.
 \begin{figure}[H]
@@ -137,7 +143,7 @@ E = \begin{bmatrix}
 \end{center}
 \end{figure}
 
-Теперь будем изменять количество нейронов в скрытом слое в диапазоне $1 \div 50$. 
+Теперь будем изменять количество нейронов в скрытом слое в диапазоне $1 \div 50$ и проверять ошибку на тестовой выборке. 
 
 \lstinputlisting[linerange={16-26}]{lab3_2_1.m}
 
@@ -160,41 +166,178 @@ E = \begin{bmatrix}
 \end{figure}
 \vspace{-0.5cm}
 
-Применим различные пакетные алгоритмы обучения и подберем для каждого из них оптимальные параметры. В таблице \ref{tab:2_6} приведены сводные результаты.
+\subsection{Пакетные алгоритмы обучения}
 
+Применим различные пакетные алгоритмы обучения и подберем для каждого из них оптимальные параметры. В таблице \ref{tab:2_6_1} приведены сводные результаты для градиентных алгоритмов.
 \begin{table}[H]
 \begin{center}
 	\def\tabcolsep{15pt}
-	\caption{Функции обучения}
-	\label{tab:2_6}
-	\begin{tabular}{|c|c|c|c|c|}
+	\caption{Градиентные алгоритмы}
+	\label{tab:2_6_1}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Функция & Параметры & Число нейронов & Ошибка & Число эпох \\
-		\hline
-		\hline
-		\code{traingda} & - & - & - & - \\
-		\hline
-		\code{traingdm} & - & - & - & - \\
-		\hline
-		\code{traingdx} & - & - & - & - \\
-		\hline
-		\code{trainrp} & - & - & - & - \\
+		Функция & Параметры & Ошибка & Число эпох \\
 		\hline
 		\hline
-		\code{traincgf} & - & - & - & - \\
+		\code{traingda} & \makecell{
+			\code{lr = 0.01} \\ 
+			\code{lr_inc = 1.05} \\ 
+			\code{lr_dec = 0.7} \\
+			\code{max_perf_inc  = 1.04}} & 0.0059 & 132 \\
 		\hline
-		\code{trainscg} & - & - & - & - \\
+		\code{traingdm} & \makecell{
+			\code{lr = 0.02} \\ 
+			\code{mc = 0.8}} & 0.0106 & 2000 \\
 		\hline
+		\code{traingdx} & \makecell{
+			\code{lr = 0.01} \\ 
+			\code{mc = 0.8} \\
+			\code{lr_inc = 1.05} \\ 
+			\code{lr_dec = 0.7} \\
+			\code{max_perf_inc  = 1.02}} & 0.0017 & 175 \\
 		\hline
-		\code{trainbfg} & - & - & - & - \\
-		\hline
-		\code{trainlm} & - & - & - & - \\
-		\hline
-		\code{trainoss} & - & - & - & - \\
+		\code{trainrp} & \makecell{
+			\code{delt_inc = 1.2} \\
+			\code{delt_dec = 0.5} \\
+			\code{delta0 = 0.5} \\
+			\code{deltamax = 50.0}} & 0.0041 & 51 \\
 		\hline
 	\end{tabular}
 \end{center}
 \end{table} 
+
+На рис. \ref{fig:2_6_1} изображена аппроксимация градиентными алгоритмами.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_6_1}
+	\caption{Аппроксимация градиентными алгоритмами}
+	\label{fig:2_6_1}
+\end{center}
+\end{figure}
+
+В таблице \ref{tab:2_6_2} приведены сводные результаты для метода сопряженных градиентов.
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Метод сопряженных градиентов}
+	\label{tab:2_6_2}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Функция & Параметры & Ошибка & Число эпох \\
+		\hline
+		\hline
+		\code{traincgf} & \makecell{
+			\code{searchFcn = 'srchcha'} \\
+			\code{scale_tol = 20} \\
+			\code{alpha = 0.001} \\
+			\code{beta = 0.1} \\
+			\code{delta = 0.01} \\
+			\code{gama = 0.1} \\
+			\code{low_lim = 0.1} \\
+			\code{up_lim = 0.8} \\
+			\code{max_step = 100} \\
+			\code{min_step = 1.0e-6} \\
+			\code{bmax = 26} \\
+			\code{batch_frag = 0}} & 9.3685e-04 & 39 \\
+		\hline
+		\code{trainscg} & \makecell{
+			\code{sigma = 5e-5} \\ 
+			\code{lambda = 5e-7}} & 3.8760e-04 & 45 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table} 
+
+На рис. \ref{fig:2_6_2} изображена аппроксимация методом сопряженных градиентов.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_6_2}
+	\caption{Аппроксимация методом сопряженных градиентов}
+	\label{fig:2_6_2}
+\end{center}
+\end{figure}
+
+В таблице \ref{tab:2_6_3} приведены сводные результаты для квазиньютоновских алгоритмов.
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Квазиньютоновские алгоритмы}
+	\label{tab:2_6_3}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Функция & Параметры & Ошибка & Число эпох \\
+		\hline
+		\hline
+		\code{trainbfg} & \makecell{
+			\code{searchFcn = 'srchbac'} \\
+			\code{scale_tol = 20} \\
+			\code{alpha = 0.001} \\
+			\code{beta = 0.1} \\
+			\code{delta = 0.01} \\
+			\code{gama = 0.1} \\
+			\code{low_lim = 0.1} \\
+			\code{up_lim = 0.5} \\
+			\code{max_step = 100} \\
+			\code{min_step = 1.0e-6} \\
+			\code{bmax = 26} \\
+			\code{batch_frag = 0}} & 4.4726e-04 & 89 \\
+		\hline
+		\code{trainlm} & \makecell{
+			\code{mu = 0.001} \\ 
+			\code{mu_dec = 0.1} \\
+			\code{mu_inc = 10} \\
+			\code{mu_max = 1e10}} & 6.1573e-05 & 11 \\
+		\hline
+		\code{trainoss} & \makecell{
+			\code{searchFcn = 'srchbac'} \\
+			\code{scale_tol = 20} \\
+			\code{alpha = 0.001} \\
+			\code{beta = 0.1} \\
+			\code{delta = 0.01} \\
+			\code{gama = 0.1} \\
+			\code{low_lim = 0.1} \\
+			\code{up_lim = 0.8} \\
+			\code{max_step = 100} \\
+			\code{min_step = 1.0e-6} \\
+			\code{bmax = 26} \\
+			\code{batch_frag = 0}} & 6.8439e-04 & 118 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table} 
+
+На рис. \ref{fig:2_6_3} изображена аппроксимация квазиньютоновскими алгоритмами.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_6_3}
+	\caption{Аппроксимация квазиньютоновскими алгоритмами}
+	\label{fig:2_6_3}
+\end{center}
+\end{figure}
+
+\subsection{НС с двумя скрытыми слоями}
+
+%Создайте НС с двумя скрытыми слоями. На 1-2 функциях обучения подберите количество нейронов в 2 скрытых слоях так, чтобы минимизировать ошибку аппроксимации. Сравните количество скрытых нейронов в НС с 1 и 2 скрытыми слоями. Постройте полученный график аппроксимации и приведите значение ошибки.
+
+Создадим НС с двумя скрытыми слоями. Подберем количество нейронов в скрытых слоях для аппроксимации нелинейной функции.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_7_1}
+	\caption{Зависимость ошиби от числа нейронов скрытом слое}
+	\label{fig:2_7_1}
+\end{center}
+\end{figure}
+
+Видно, что нейронная сеть лучше всего минимизирует ошибку при среднем количестве нейронов в обоих слоях, т.е. примерно при $10 \div 20$ нейронах. В данном случае минимальная ошибка на тестовой выборе была получена при $9$ нейронах в первом скрытом слое и $9$ во втором. Полученная ошибка оказалась равна $3.5599\cdot 10^{-5}$, что лучше, чем ошибка, полученная с помощью однослойной нейронной сети ($\approx 10^{-4}$). На рис. \ref{fig:2_7_2} изображены примеры уданчной и неудачной аппроксимации.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_7_2}
+	\caption{Аппроксимации при различном количестве нейронов}
+	\label{fig:2_7_2}
+\end{center}
+\end{figure}
 
 \section{Выводы}
 
