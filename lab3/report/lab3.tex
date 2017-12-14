@@ -276,7 +276,7 @@ E = \begin{bmatrix}
 			\code{delta = 0.01} \\
 			\code{gama = 0.1} \\
 			\code{low_lim = 0.1} \\
-			\code{up_lim = 0.5} \\
+			\code{up_lim = 0.8} \\
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 26} \\
@@ -360,7 +360,7 @@ E = \begin{bmatrix}
 
 Для разных функций обучения (\code{trainlm}, \code{trainbfg}, \code{traingdx}, \code{traincgf}) определим оптимальное число нейронов в скрытом слое (слоях), настройте параметры функций обучения, обучите НС, вычислим ошибку классфификации.
 
-На рис. \ref{fig:3_2_1} изображена зависимость ошибки от числа нейронов в скрытом слое.
+На рис. \ref{fig:3_2_1} изображена зависимость ошибки от числа нейронов в скрытом слое для различных функций обучения.
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[scale=0.88]{3_2_1}
@@ -368,43 +368,102 @@ E = \begin{bmatrix}
 	\label{fig:3_2_1}
 \end{center}
 \end{figure}
-
+Из графика видно, что оптимальным для каждой функции обучения является около $30$ нейронов. Будем изменять параметры функций обучения при этом количестве нейронов во внутреннем слое. На рис. В таблице \ref{fig:3_2} приведены примеры получаемых разбиений. 
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth, height=6cm]{3_2_2}
+		\caption{Хорошее}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth, height=6cm]{3_2_3}
+		\caption{Плохое}
+	\end{subfigure}
+	\caption{Примеры разбиений}
+	\label{fig:3_2}
+\end{center}
+\end{figure}
+В таблице \ref{tab:3_2_1} приведены сводные результаты для разных алгоритмов обучения.
 \begin{table}[H]
 \begin{center}
 	\def\tabcolsep{15pt}
-	\caption{Градиентные алгоритмы}
-	\label{tab:2_6_1}
+	\caption{Различные функции обучения}
+	\label{tab:3_2_1}
 	\begin{tabular}{|c|c|c|c|}
 		\hline
 		Функция & Параметры & Ошибка & Число эпох \\
 		\hline
 		\hline
-		\code{traingda} & \makecell{
-			\code{lr = 0.01} \\ 
-			\code{lr_inc = 1.05} \\ 
-			\code{lr_dec = 0.7} \\
-			\code{max_perf_inc  = 1.04}} & 0.0059 & 132 \\
+		\code{trainlm} & \makecell{
+			\code{mu = 0.01} \\ 
+			\code{mu_dec = 0.01} \\ 
+			\code{mu_inc = 100} \\
+			\code{mu_max = 1e10}} & 0.0079 & 66 \\
 		\hline
-		\code{traingdm} & \makecell{
-			\code{lr = 0.02} \\ 
-			\code{mc = 0.8}} & 0.0106 & 2000 \\
+		\code{trainbfg} & \makecell{
+			\code{searchFcn = 'srchbac'} \\
+			\code{scale_tol = 20} \\
+			\code{alpha = 0.01} \\
+			\code{beta = 0.1} \\
+			\code{delta = 0.01} \\
+			\code{gama = 0.1} \\
+			\code{low_lim = 0.2} \\
+			\code{up_lim = 0.5} \\
+			\code{max_step = 100} \\
+			\code{min_step = 1.0e-6} \\
+			\code{bmax = 26} \\
+			\code{batch_frag = 0}} & 0.0040 & 61 \\
 		\hline
 		\code{traingdx} & \makecell{
-			\code{lr = 0.01} \\ 
-			\code{mc = 0.8} \\
-			\code{lr_inc = 1.05} \\ 
-			\code{lr_dec = 0.7} \\
-			\code{max_perf_inc  = 1.02}} & 0.0017 & 175 \\
+			\code{lr = 0.05} \\
+			\code{mc = 0.5} \\
+			\code{lr_inc = 1.1} \\
+			\code{lr_dec = 0.8} \\
+			\code{max_perf_inc  = 1.02}} & 0.0037 & 53 \\
 		\hline
-		\code{trainrp} & \makecell{
-			\code{delt_inc = 1.2} \\
-			\code{delt_dec = 0.5} \\
-			\code{delta0 = 0.5} \\
-			\code{deltamax = 50.0}} & 0.0041 & 51 \\
+		\code{traincgf} & \makecell{
+			\code{searchFcn = 'srchbre'} \\
+			\code{scale_tol = 50} \\
+			\code{alpha = 0.05} \\
+			\code{beta = 0.5} \\
+			\code{delta = 0.01} \\
+			\code{gama = 0.5} \\
+			\code{low_lim = 0.2} \\
+			\code{up_lim = 0.5} \\
+			\code{max_step = 100} \\
+			\code{min_step = 1.0e-6} \\
+			\code{bmax = 56} \\
+			\code{batch_frag = 0}} & 0.0040 & 73 \\
 		\hline
 	\end{tabular}
 \end{center}
 \end{table}
+
+Из таблицы видно, что все алгоритмы смогли достичь ошибки $\sim 10^{-3}$, но наилучших результатов удалось добиться с помощью функции \code{traingdx}.
+
+\subsection{Функция производительности}
+
+Изменим выходной слой НС на \code{softmax}, функцию производительности на \code{crossentropy}, функцию обучения \code{trainscg}. Обучим НС, подобрав наилучшее сочетание остальных параметров.
+
+\lstinputlisting[linerange={15-30}]{lab3_3_2.m}
+
+На рис. \ref{fig:3_3} приведены примеры получаемых разбиений. Очевидно, что у нейронной сети не получается с достаточной точностью разбить плоскость на классы. Получаемая ошибка на тестовой выборке $\geq 15$.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth, height=6cm]{3_3_1}
+		\caption{Хорошее}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth, height=6cm]{3_3_2}
+		\caption{Плохое}
+	\end{subfigure}
+	\caption{Примеры разбиений}
+	\label{fig:3_3}
+\end{center}
+\end{figure}
+
+\subsection{Передаточная функция выходного слоя}
 
 \section{Выводы}
 
