@@ -24,8 +24,14 @@ function [Y, Q] = range_hidden_neurons(N, P, T, trainIdx, testIdx)
 end
 
 function net = init_ff(P, T, N)
+    type_train_func = 12;    % Функция обучения: 
+    %1-traingd, 2-traingda, 3-traingdm, 4-traingdx, 5-trainrp, 
+    %6-traincgf, 7-traincgb, 8-traincgp, 9-trainscg, 10-trainlm, 
+    %11-trainbfg, 12-trainoss, 13-trainbr
+    
     net = newff(P, T, N);
     net = init(net);
+    net = set_train_param(net, type_train_func);
     net.trainParam.epochs = 1000;
     net.trainParam.time = Inf;
     net.trainParam.goal = 0;

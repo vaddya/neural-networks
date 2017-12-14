@@ -204,7 +204,7 @@ E = \begin{bmatrix}
 		\hline
 	\end{tabular}
 \end{center}
-\end{table} 
+\end{table}
 \vspace{-1.5cm}
 \begin{figure}[H]
 \begin{center}
@@ -338,6 +338,71 @@ E = \begin{bmatrix}
 	\label{fig:2_7_2}
 \end{center}
 \end{figure}
+
+\newpage
+
+\section{Классификация с помощью НС ПР}
+
+\subsection{Формирование обучающей и тестовой выборки}
+
+Сформируем обучающую и тестовую выборки на основе ранее созданных функций. На рис. \ref{fig:3_1} изображены сформированные выборки.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=1]{3_1}
+	\caption{Обучающая и тестовая выборки}
+	\label{fig:3_1}
+\end{center}
+\end{figure}
+
+\subsection{Функция обучения и число скрытых нейронов}
+
+Для разных функций обучения (\code{trainlm}, \code{trainbfg}, \code{traingdx}, \code{traincgf}) определим оптимальное число нейронов в скрытом слое (слоях), настройте параметры функций обучения, обучите НС, вычислим ошибку классфификации.
+
+На рис. \ref{fig:3_2_1} изображена зависимость ошибки от числа нейронов в скрытом слое.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.88]{3_2_1}
+	\caption{Зависимость ошибки от числа нейронов в скрытом слое}
+	\label{fig:3_2_1}
+\end{center}
+\end{figure}
+
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Градиентные алгоритмы}
+	\label{tab:2_6_1}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Функция & Параметры & Ошибка & Число эпох \\
+		\hline
+		\hline
+		\code{traingda} & \makecell{
+			\code{lr = 0.01} \\ 
+			\code{lr_inc = 1.05} \\ 
+			\code{lr_dec = 0.7} \\
+			\code{max_perf_inc  = 1.04}} & 0.0059 & 132 \\
+		\hline
+		\code{traingdm} & \makecell{
+			\code{lr = 0.02} \\ 
+			\code{mc = 0.8}} & 0.0106 & 2000 \\
+		\hline
+		\code{traingdx} & \makecell{
+			\code{lr = 0.01} \\ 
+			\code{mc = 0.8} \\
+			\code{lr_inc = 1.05} \\ 
+			\code{lr_dec = 0.7} \\
+			\code{max_perf_inc  = 1.02}} & 0.0017 & 175 \\
+		\hline
+		\code{trainrp} & \makecell{
+			\code{delt_inc = 1.2} \\
+			\code{delt_dec = 0.5} \\
+			\code{delta0 = 0.5} \\
+			\code{deltamax = 50.0}} & 0.0041 & 51 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}
 
 \section{Выводы}
 
