@@ -6,11 +6,11 @@ function net = set_train_param(net, type_train_func)
 
     trainParam = net.trainParam;
 
-    trainParam.epochs = 2000;
+    trainParam.epochs = 1000;
     trainParam.time = Inf;
     trainParam.goal = 0;
-    trainParam.min_grad = 1e-05;
-    trainParam.max_fail = 10;
+    trainParam.min_grad = 1e-15;
+    trainParam.max_fail = 150;
     
     % Параметры визуализации обучения
     trainParam.showWindow = true;       % Показывать окно или нет
@@ -37,10 +37,10 @@ function net = set_train_param(net, type_train_func)
         case 4
             % traingx - Градиентный спуск c адаптацией и моментом
             trainParam.lr = 0.05;               % !Скорость обучения (изначальная)
-            trainParam.mc = 0.6;                % !Момент инерции
+            trainParam.mc = 0.7;                % !Момент инерции
             trainParam.lr_inc = 1.1;           % !Коэффициент увеличения скорости обучения
             trainParam.lr_dec = 0.8;            % !Коэффициент уменьшения скорости обучения
-            trainParam.max_perf_inc  = 1.2;    % !Допустимый коэффициент изменения ошибки 
+            trainParam.max_perf_inc  = 1.1;    % !Допустимый коэффициент изменения ошибки 
         case 5
             % trainrp
             trainParam.lr = 0.01;               % !Скорость обучения (изначальная)
