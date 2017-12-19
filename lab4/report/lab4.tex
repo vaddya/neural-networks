@@ -33,23 +33,99 @@
 \end{center}
 \end{figure}
 
-\subsection{Подбор значения spread}
+\subsection{Аппроксимация с помощью точной РБФ-НС}
 
 %Изменяя ширину РБФ (spread), определите наилучшее значение этого параметра с точки зрения качества аппроксимации. Постройте три графика аппроксимации для разных значений spread: оптимального, больше и меньше оптимального, когда явно видно, что аппроксимация плохая. При построении графиков аппроксимации не забывайте приводить графики исходной желаемой зависимости.
 %Постройте график зависимости ошибки аппроксимации от параметра spread в логарифмическом масштабе.
-
-\subsection{Аппроксимация с помощью точной РБФ-НС}
-
 %С помощью точной РБФ-НС (newrbe) аппроксимируйте функцию (для вашего варианта из заданий с номером 5).
+
+Подберем наилучшее значение параметра \code{spread} для обучения с помощью точной РБФ-НС. На рис. \ref{fig:2_2_1} изображена зависимость ошибки \code{perform} от значения параметра \code{spread} в логарифмическом масштабе. 
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_2_1}
+	\caption{Зависимость \code{perform} от \code{spread}}
+	\label{fig:2_2_1}
+\end{center}
+\end{figure}
+
+Оптимальным можно считать значения \code{spread} $\leq 0.1$. Постром два графика аппроксимации для оптимального значения \code{spread} и больше оптимального. При уменьшении параметра даже до $10^{-10}$ функция аппроксимируется без ошибок. На рис. \ref{fig:2_2_2} изображены построенные аппроксимации.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_2_2}
+		\caption{\code{spread = 1}}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_2_3}
+		\caption{\code{spread = 0.1}}
+	\end{subfigure}
+	\caption{Аппроксимация при разных значениях \code{spread}}
+	\label{fig:2_2_2}
+\end{center}
+\end{figure}
 
 \subsection{Аппроксимация с помощью приближенной РБФ-НС}
 
 %Изменяя значение допустимой ошибки (goal), постройте зависимость числа используемых РБФ-нейронов от допустимой ошибки аппроксимации. Для промежуточных результатов постройте графики аппроксимации.
 
+На рис. \ref{fig:2_3_1} изображена зависимость числа используемых РБФ-нейронов от допустимой ошибки аппроксимации \code{goal} в логарифмическом масштабе.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_3_1}
+	\caption{Зависимость числа нейронов от \code{goal}}
+	\label{fig:2_3_1}
+\end{center}
+\end{figure}
+
+На рис. \ref{fig:2_3_2} изображены аппроксимации при разных значениях допустимой ошибки.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_3_2}
+		\caption{\code{goal = 0.01} (2 нейрона)}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_3_3}
+		\caption{\code{goal = 0.001} (18 нейронов)}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_3_4}
+		\caption{\code{goal = 0.0001} (23 нейрона)}
+	\end{subfigure}
+	\caption{Аппроксимация при разных значениях \code{goal}}
+	\label{fig:2_3_2}
+\end{center}
+\end{figure}
+
 \subsection{Аппроксимация с помощью GRNN}
 
 %По аналогии с newrb изменяя ширину РБФ (spread), определите наилучшее значение этого параметра с точки зрения качества аппроксимации. Постройте график аппроксимации на исходной зависимости.
 %Уменьшите объем обучающей выборки в несколько раз (рассмотрите 3 случая) и подберите оптимальные значения параметра spread для каждого случая. Постройте полученные графики аппроксимации. Приведите значения ошибок.
+
+Подберем наилучшее значение параметра \code{spread} для обучения с помощью GRNN. На рис. \ref{fig:2_4_1} изображена зависимость ошибки \code{perform} от значения параметра \code{spread} в логарифмическом масштабе. 
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.9]{2_4_1}
+	\caption{Зависимость \code{perform} от \code{spread}}
+	\label{fig:2_4_1}
+\end{center}
+\end{figure}
+
+Оптимальным можно считать значения \code{spread} $\leq 0.01$. Постром два графика аппроксимации для оптимального значения \code{spread} и больше оптимального. При уменьшении параметра даже до $10^{-10}$ функция аппроксимируется без ошибок. На рис. \ref{fig:2_4_2} изображены построенные аппроксимации.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_4_2}
+		\caption{\code{spread = 0.1}}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{2_4_3}
+		\caption{\code{spread = 0.01}}
+	\end{subfigure}
+	\caption{Аппроксимация при разных значениях \code{spread}}
+	\label{fig:2_4_2}
+\end{center}
+\end{figure}
 
 \subsection{Сравнение качества апрпоксимации}
 
