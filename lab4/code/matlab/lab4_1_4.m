@@ -5,8 +5,9 @@ load('5.mat');
 %Q = range_spread(P, T, domain)
 %plot_quality(domain, Q);
 
-net = newgrnn(P, T, 0.1);
-plot_target_and_approx(net, P, T)
+net = newgrnn(P, T, 1e-10);
+net.layers{1}.size
+plot_target_and_approx(net, P, T);
 
 function Q = range_spread(P, T, domain)
     Q = zeros(1, length(domain)); 

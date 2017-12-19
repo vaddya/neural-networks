@@ -1,12 +1,12 @@
 close all;
 load('5.mat');
 
-%domain = 2 .^ (-5 : 3);
-%Q = range_spread(P, T, domain)
-%plot_quality(domain, Q);
+domain = 2 .^ (-5 : 3);
+Q = range_spread(P, T, domain)
+plot_quality(domain, Q);
 
-net = newrbe(P, T, 0.0001);
-plot_target_and_approx(net, P, T)
+%net = newrbe(P, T, 0.0001);
+%plot_target_and_approx(net, P, T)
 
 function Q = range_spread(P, T, domain)
     Q = zeros(1, length(domain)); 
