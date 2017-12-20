@@ -182,16 +182,85 @@
 \end{center}
 \end{figure}
 
+На рис. \ref{fig:3_2_3} изображены матрицы неточностей для этих параметров \code{spead}.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_2_4}
+		\caption{\code{spread = 0.2}}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_2_5}
+		\caption{\code{spread = 0.01}}
+	\end{subfigure}
+	\caption{Матрицы неточностей при разных значениях \code{spread}}
+	\label{fig:3_2_3}
+\end{center}
+\end{figure}
+
 \subsection{Уменьшение объема выборки}
 
 %Уменьшите объем обучающей выборки в несколько раз (рассмотрите 3 случая) и подберите оптимальные значения параметра spread для каждого случая. Визуализируйте результаты классификации и приведите значение средней ошибки.
+
+Уменьшим обучающую выборку в 5 раз, т.е. с 1681 примера до 336. На рис. \ref{fig:3_3_1} приведена зависимость ошибки \code{perform} от значения параметра \code{spread} в логарифмическом масштабе. 
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.8]{3_3_1}
+	\caption{Зависимость \code{perform} от \code{spread}}
+	\label{fig:3_3_1}
+\end{center}
+\end{figure}
+
+Оптимальным можно считать \code{spread = 0.01}, средняя ошибка равна $0.0553$. Для данного значения классифицируем выборку всех входных значений. На рис. \ref{fig:3_3_2} приведены результаты классификации и матрица неточностей при \code{spread = 0.01}.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_3_2}
+		\caption{Классификация}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_3_3}
+		\caption{Матрица неточностей}
+	\end{subfigure}
+	\caption{Классификация и матрица неточностей при \code{spread = 0.01}}
+	\label{fig:3_3_2}
+\end{center}
+\end{figure}
+
+\newpage
+
+Уменьшим обучающую выборку в 10 раз, т.е. с 1681 примера до 168. На рис. \ref{fig:3_3_4} приведена зависимость ошибки \code{perform} от значения параметра \code{spread} в логарифмическом масштабе. 
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.8]{3_3_4}
+	\caption{Зависимость \code{perform} от \code{spread}}
+	\label{fig:3_3_4}
+\end{center}
+\end{figure}
+\vspace{-1cm}
+
+Оптимальным можно также считать \code{spread = 0.01}. Средняя ошибка равна $0.0744$. Для данного значения классифицируем выборку всех входных значений. На рис. \ref{fig:3_3_5} приведены результаты классификации и матрица неточностей при \code{spread = 0.01}.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_3_5}
+		\caption{Классификация}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=\textwidth]{3_3_6}
+		\caption{Матрица неточностей}
+	\end{subfigure}
+	\caption{Классификация и матрица неточностей при \code{spread = 0.01}}
+	\label{fig:3_3_5}
+\end{center}
+\end{figure}
 
 \subsection{Сравнение качества классификации}
 
 %Постройте поверхность ошибки в плоскости двух параметров: ширина РБФ-функции spread и объем обучающей выборки.
 %Сравните полученные результаты с НС прямого распространения по аналогии с п. 3 задания 1.
 
-\newpage
+По сравнению с сетями прямого распространения, PNN смогла добиться нулевой ошибки, в то время как НСПР лишь $\sim 10^{-4}$. Однако, в PNN количество нейронов равняется обучающей выборке ($1681$ нейрон), в то время как в НСПР требовалось около $20 \div 30$ нейронов для данной классификации. PNN оказалось проще настроить, так как необходимо было задать только один параметр \code{spread}. В НСПР же необходимо задавать количество нейронов скрытого слоя и парметры функции обучения.
 
 \section{Разбиение плоскости на $N$ классов}
 

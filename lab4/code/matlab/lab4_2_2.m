@@ -7,30 +7,24 @@ T = double(T);
 %plot_quality(domain, Q);
 %axis([1e-3 10 0 0.5]);
 
-net = init_pnn(T, P, 0.2);
-[Y, Q] = netsim(net, P, T); Q
+Tvec = class2vec(T' + 1);
+net = newpnn(P', Tvec, 0.01);
+net.layers{1}.size
+Yvec = sim(net, P');
+Y = vec2class(Yvec) - 1;
+Q = perform(net, T', Y);
 plot_2_classes(P, Y);
+plotconfusion(Tvec, Yvec);
 
 function Q = range_spread(P, T, domain)
     Q = zeros(1, length(domain)); 
     i = 1;
     for spread = domain
-        net = init_pnn(T, P, spread);
-        Y = sim(net, P');
+        Tvec = class2vec(T' + 1);
+        net = newpnn(P', Tvec, spread);
         [~, Q(i)] = netsim(net, P, T);
         i = i + 1;
     end
-end
-
-function net = init_pnn(T, P, spread)
-    Tvec = class2vec(T' + 1);
-    net = newpnn(P', Tvec, spread);
-end
-
-function [Y, Q] = netsim(net, P, T)
-    Yvec = sim(net, P');
-    Y = vec2class(Yvec) - 1;
-    Q = perform(net, T', Y);
 end
 
 function plot_quality(X, Q)
