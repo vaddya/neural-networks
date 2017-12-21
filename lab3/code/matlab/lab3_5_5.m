@@ -5,16 +5,16 @@ load('8_rotate.mat');
 load('8_shift.mat');
 T(T == 0) = 10; % число 0 = класс 10
 T = double(T);
-% 
-% [trainIdx, testIdx] = dividerand(length(P), 0.5, 0.5, 0);
-% 
-% Tvec = class2vec(T');
-% net = init_ff(P, Tvec, 50, 10);
-% net = train(net, P(trainIdx,:)', class2vec(T(trainIdx)));
-% Yvec = sim(net, P(testIdx,:)');
-% Y = vec2class(Yvec);
-% Q = calc_error(Y, T(testIdx))
-% plot_confusion(T(testIdx), Y);
+
+[trainIdx, testIdx] = dividerand(length(P), 0.5, 0.5, 0);
+
+Tvec = class2vec(T');
+net = init_ff(P, Tvec, 50, 10);
+net = train(net, P(trainIdx,:)', class2vec(T(trainIdx)));
+Yvec = sim(net, P(testIdx,:)');
+Y = vec2class(Yvec);
+Q = calc_error(Y, T(testIdx))
+plot_confusion(T(testIdx), Y);
 
 research(net, P, T)
 research(net, P_noisy, T)

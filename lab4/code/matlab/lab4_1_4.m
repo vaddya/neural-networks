@@ -1,21 +1,24 @@
 close all;
 load('5.mat');
 
-%domain = 2 .^ (-8 : 3);
-%Q = range_spread(P, T, domain)
-%plot_quality(domain, Q);
+[trainIdx, testIdx] = dividerand(length(P), 0.7, 0.3, 0);
 
-net = newgrnn(P, T, 1e-10);
-net.layers{1}.size
-plot_target_and_approx(net, P, T);
+domain = 2 .^ (-8 : 3);
+Q = range_spread(P, T, trainIdx, testIdx, domain)
+plot_quality(domain, Q);
 
-function Q = range_spread(P, T, domain)
+% net = newgrnn(P, T, 1e-10);
+% net.layers{1}.size
+% plot_target_and_approx(net, P, T);
+
+function Q = range_spread(P, T, trainIdx, testIdx, domain)
     Q = zeros(1, length(domain)); 
     i = 1;
     for spread = domain
-        net = newgrnn(P, T, spread);
-        Y = sim(net, P);
-        Q(i) = perform(net, T, Y);
+        net = newgrnn(P(trainIdx), T(trainIdx), spread);
+        Y = sim(net, P(testIdx));
+        net.layers{1}.size
+        Q(i) = perform(net, T(testIdx), Y);
         i = i + 1;
     end
 end

@@ -4,20 +4,20 @@ T = double(T);
 
 [Pdec, Tdec, idx] = decrease(P, T, 0.2);
 
-domain = 2 .^ (-15 : 5);
-Q = range_spread(P, T, domain, idx)
-plot_quality(domain, Q);
-axis([2^(-15) 2^5 0 0.5]);
+% domain = 2 .^ (-15 : 5);
+% Q = range_spread(P, T, domain, idx)
+% plot_quality(domain, Q);
+% axis([2^(-15) 2^5 0 0.5]);
 
-% Tvec = class2vec(Tdec' + 1);
-% net = newpnn(Pdec', Tvec, 0.01);
-% Yvec = sim(net, P');
-% Y = vec2class(Yvec) - 1;
-% Q = calc_error(Y', T)
-% plot_2_classes(P, Y);
-% figure;
-% Tvec = class2vec(T' + 1);
-% plotconfusion(Tvec, Yvec);
+Tvec = class2vec(Tdec' + 1);
+net = newpnn(Pdec', Tvec, 0.01);
+Yvec = sim(net, P');
+Y = vec2class(Yvec) - 1;
+Q = calc_error(Y', T)
+plot_2_classes(P, Y);
+figure;
+Tvec = class2vec(T' + 1);
+plotconfusion(Tvec, Yvec);
 
 function Q = range_spread(P, T, domain, idx)
     Q = zeros(1, length(domain)); 
