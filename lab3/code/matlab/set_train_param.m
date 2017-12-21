@@ -10,7 +10,7 @@ function net = set_train_param(net, type_train_func)
     trainParam.time = Inf;
     trainParam.goal = 0;
     trainParam.min_grad = 1e-15;
-    trainParam.max_fail = 150;
+    trainParam.max_fail = 25;
     
     % Параметры визуализации обучения
     trainParam.showWindow = true;       % Показывать окно или нет

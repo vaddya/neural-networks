@@ -6,9 +6,9 @@
 
 \tableofcontents
 \newpage
-\listoftables
-\listoffigures
-\newpage
+%\listoftables
+%\listoffigures
+%\newpage
 
 \section{Цели работы}
 
@@ -175,36 +175,36 @@ E = \begin{bmatrix}
 \vspace{-0.5cm}
 \begin{table}[H]
 \begin{center}
-	\def\tabcolsep{15pt}
+	\def\tabcolsep{10pt}
 	\caption{Градиентные алгоритмы}
 	\label{tab:2_6_1}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Функция & Параметры & Ошибка & Число эпох \\
+		Функция & Параметры & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
 		\code{traingda} & \makecell{
 			\code{lr = 0.01} \\ 
 			\code{lr_inc = 1.05} \\ 
 			\code{lr_dec = 0.7} \\
-			\code{max_perf_inc  = 1.04}} & 0.0059 & 132 \\
+			\code{max_perf_inc  = 1.04}} & 20 & 0.0059 & 132 \\
 		\hline
 		\code{traingdm} & \makecell{
 			\code{lr = 0.02} \\ 
-			\code{mc = 0.8}} & 0.0106 & 2000 \\
+			\code{mc = 0.8}} & 15 & 0.0106 & 2000 \\
 		\hline
 		\code{traingdx} & \makecell{
 			\code{lr = 0.01} \\ 
 			\code{mc = 0.8} \\
 			\code{lr_inc = 1.05} \\ 
 			\code{lr_dec = 0.7} \\
-			\code{max_perf_inc  = 1.02}} & 0.0017 & 175 \\
+			\code{max_perf_inc  = 1.02}} & 15 & 0.0017 & 175 \\
 		\hline
 		\code{trainrp} & \makecell{
 			\code{delt_inc = 1.2} \\
 			\code{delt_dec = 0.5} \\
 			\code{delta0 = 0.5} \\
-			\code{deltamax = 50.0}} & 0.0041 & 51 \\
+			\code{deltamax = 50.0}} & 15 & 0.0041 & 51 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -221,12 +221,12 @@ E = \begin{bmatrix}
 В таблице \ref{tab:2_6_2} и на рис. \ref{fig:2_6_2} приведены сводные результаты для метода сопряженных градиентов.
 \begin{table}[H]
 \begin{center}
-	\def\tabcolsep{15pt}
+	\def\tabcolsep{10pt}
 	\caption{Метод сопряженных градиентов}
 	\label{tab:2_6_2}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Функция & Параметры & Ошибка & Число эпох \\
+		Функция & Параметры & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
 		\code{traincgf} & \makecell{
@@ -241,11 +241,11 @@ E = \begin{bmatrix}
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 26} \\
-			\code{batch_frag = 0}} & 9.3685e-04 & 39 \\
+			\code{batch_frag = 0}} & 25 & 9.3685e-04 & 39 \\
 		\hline
 		\code{trainscg} & \makecell{
 			\code{sigma = 5e-5} \\ 
-			\code{lambda = 5e-7}} & 3.8760e-04 & 45 \\
+			\code{lambda = 5e-7}} & 20 & 3.8760e-04 & 45 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -262,12 +262,12 @@ E = \begin{bmatrix}
 В таблице \ref{tab:2_6_3} и на рис. \ref{fig:2_6_3} приведены сводные результаты для квазиньютоновских алгоритмов.
 \begin{table}[H]
 \begin{center}
-	\def\tabcolsep{15pt}
+	\def\tabcolsep{10pt}
 	\caption{Квазиньютоновские алгоритмы}
 	\label{tab:2_6_3}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Функция & Параметры & Ошибка & Число эпох \\
+		Функция & Параметры & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
 		\code{trainbfg} & \makecell{
@@ -282,13 +282,13 @@ E = \begin{bmatrix}
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 26} \\
-			\code{batch_frag = 0}} & 4.4726e-04 & 89 \\
+			\code{batch_frag = 0}} & 15 & 4.4726e-04 & 89 \\
 		\hline
 		\code{trainlm} & \makecell{
 			\code{mu = 0.001} \\ 
 			\code{mu_dec = 0.1} \\
 			\code{mu_inc = 10} \\
-			\code{mu_max = 1e10}} & 6.1573e-05 & 11 \\
+			\code{mu_max = 1e10}} & 20 & 6.1573e-05 & 11 \\
 		\hline
 		\code{trainoss} & \makecell{
 			\code{searchFcn = 'srchbac'} \\
@@ -302,7 +302,7 @@ E = \begin{bmatrix}
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 26} \\
-			\code{batch_frag = 0}} & 6.8439e-04 & 118 \\
+			\code{batch_frag = 0}} & 15 & 6.8439e-04 & 118 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -389,19 +389,19 @@ E = \begin{bmatrix}
 В таблице \ref{tab:3_2_1} приведены сводные результаты для разных алгоритмов обучения.
 \begin{table}[H]
 \begin{center}
-	\def\tabcolsep{15pt}
+	\def\tabcolsep{10pt}
 	\caption{Различные функции обучения}
 	\label{tab:3_2_1}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Функция & Параметры & Ошибка & Число эпох \\
+		Функция & Параметры & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
 		\code{trainlm} & \makecell{
 			\code{mu = 0.01} \\ 
 			\code{mu_dec = 0.01} \\ 
 			\code{mu_inc = 100} \\
-			\code{mu_max = 1e10}} & 0.079 & 66 \\
+			\code{mu_max = 1e10}} & 35 & 0.079 & 66 \\
 		\hline
 		\code{trainbfg} & \makecell{
 			\code{searchFcn = 'srchbac'} \\
@@ -415,14 +415,14 @@ E = \begin{bmatrix}
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 26} \\
-			\code{batch_frag = 0}} & 0.040 & 61 \\
+			\code{batch_frag = 0}} & 35 & 0.040 & 61 \\
 		\hline
 		\code{traingdx} & \makecell{
 			\code{lr = 0.05} \\
 			\code{mc = 0.5} \\
 			\code{lr_inc = 1.1} \\
 			\code{lr_dec = 0.8} \\
-			\code{max_perf_inc  = 1.02}} & 0.037 & 53 \\
+			\code{max_perf_inc  = 1.02}} & 45 & 0.037 & 53 \\
 		\hline
 		\code{traincgf} & \makecell{
 			\code{searchFcn = 'srchbre'} \\
@@ -436,7 +436,7 @@ E = \begin{bmatrix}
 			\code{max_step = 100} \\
 			\code{min_step = 1.0e-6} \\
 			\code{bmax = 56} \\
-			\code{batch_frag = 0}} & 0.040 & 73 \\
+			\code{batch_frag = 0}} & 20 & 0.040 & 73 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -448,7 +448,7 @@ E = \begin{bmatrix}
 
 Изменим выходной слой НС на \code{softmax}, функцию производительности на \code{crossentropy}, функцию обучения \code{trainscg}. Обучим НС, подобрав наилучшее сочетание остальных параметров.
 
-\lstinputlisting[linerange={16-34}]{lab3_3_2.m}
+\lstinputlisting[linerange={15-34}]{lab3_3_2.m}
 
 На рис. \ref{fig:3_3} приведены примеры получаемых разбиений. Очевидно, что у нейронной сети не получается с достаточной точностью разбить плоскость на классы. Получаемая ошибка на тестовой выборке $\geq 15$.
 \begin{figure}[H]
@@ -477,14 +477,14 @@ E = \begin{bmatrix}
 	\label{tab:3_4}
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Функция & Ошибка & Число эпох \\
+		Функция & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
-		\code{purelin} & 7 & 348 \\
+		\code{purelin} & 20 & 7 & 348 \\
 		\hline
-		\code{tansig} & 13 & 1689 \\
+		\code{tansig} & 35 & 13 & 1689 \\
 		\hline
-		\code{logsig} & 6 & 1865 \\
+		\code{logsig} & 25 & 6 & 1865 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -557,7 +557,7 @@ E = \begin{bmatrix}
 	\label{fig:4_2_1}
 \end{center}
 \end{figure}
-Из графика видно, что оптимальным для каждой функции обучения является около $30 \div 40$ нейронов. Оптимальные параметры функций обучения, в данном случае, оказались теми же, что и в разделе \ref{sec:inner_neurons}, при этом  все алгоритмы сумели достичь ошибки \code{mse} примерно равной $0.5$.На рис. \ref{fig:4_2} изображены примеры получаемых разбиений.
+Таким образом, оптимальное количетсво нейронов оказалось следующим: \code{trainlm} -- 34 нейрона, \code{traunbfg} -- 23 нейрона, \code{traingdx} -- 36 нейронов, \code{traincgf} -- 46 нейрнов. Оптимальные параметры функций обучения, в данном случае, оказались теми же, что и в разделе \ref{sec:inner_neurons}, при этом ошибки \code{mse} оказались равны: \code{trainlm} -- 0.0298, \code{traunbfg} -- 0.0794, \code{traingdx} -- 0.0951, \code{traincgf} -- 0.0476. На рис. \ref{fig:4_2} изображены примеры получаемых разбиений.
 \begin{figure}[H]
 \begin{center}
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -580,7 +580,7 @@ E = \begin{bmatrix}
 \lstinputlisting[linerange={16-32}]{lab3_4_2.m}
 
 На рис. \ref{fig:4_3} приведены примеры получаемых разбиений. Видно, что исходные прямые, разбивающие плоскость на классы, изменили свои углы наклона, а также уменьшились классы, расположенные по центру. Ошибка на тестовой выборке оказалась равна $1.9984 \cdot 10^{-16}$. 
-\vspace{-1cm}
+\vspace{-0.5cm}
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[width=0.75\textwidth]{4_3}
@@ -601,16 +601,16 @@ E = \begin{bmatrix}
 	\label{tab:3_4}
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Функция & Ошибка & Число эпох \\
+		Функция & Нейроны & Ошибка & Число эпох \\
 		\hline
 		\hline
-		\code{purelin} & 192 & 443 \\
+		\code{purelin} & 50 & 192 & 443 \\
 		\hline
-		\code{tansig} & 209 & 889 \\
+		\code{tansig} & 50 & 209 & 889 \\
 		\hline
-		\code{softmax} & 218 & 239 \\
+		\code{softmax} & 35 & 88 & 221 \\
 		\hline
-		\code{logsig} & 529 & 483 \\
+		\code{logsig} & 20 & 529 & 483 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -618,7 +618,7 @@ E = \begin{bmatrix}
 \vspace{-0.5cm}
 
 На рис. \ref{fig:3_4} приведены примеры разбиений для разных функции производительности.
-\vspace{-1cm}
+\vspace{-0.5cm}
 \begin{figure}[H]
 \begin{center}
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -645,7 +645,7 @@ E = \begin{bmatrix}
 \subsection{Каскадная НСПР}
 
 Рассмотрим одну из полученных выше конфигураций НС и параметров. Изменим тип нейронной сети на каскадный. На рис. \ref{fig:4_5_1} приведена архитектура каскадной сети.
-\vspace{-0.5cm}
+
 \begin{figure}[H]
 \begin{center}
 	\includegraphics[scale=0.6]{4_5_1}
@@ -655,7 +655,7 @@ E = \begin{bmatrix}
 \end{figure}
 
 \vspace{-0.5cm}
-На рис. \ref{fig:4_5_2} приведен пример разбиения плоскости на классы каскадной нейронной сетью после обучения. При этом ошибка \code{sse} на тестовой выборке оказалась равна $141$, что несколько лучше, чем результаты, полученные в предыдущем разделе. Обучение при этом заняло $710$ эпох.
+Оптимальным оказалось использование 25 нейронов в скрытом слое. На рис. \ref{fig:4_5_2} приведен пример разбиения плоскости на классы каскадной нейронной сетью после обучения. При этом ошибка \code{sse} на тестовой выборке оказалась равна $141$, что несколько лучше, чем результаты, полученные в предыдущем разделе. Обучение при этом заняло $710$ эпох.
 \vspace{-0.5cm}
 \begin{figure}[H]
 \begin{center}
@@ -666,8 +666,203 @@ E = \begin{bmatrix}
 \end{figure}
 \vspace{-1cm}
 
+\newpage
+
+\section{Классификация многомерных образов}
+
+%1. В качестве исходных данных используйте задания с номером 8. Размерность входного сигнала совпадает с размерностью изображения. Размерность выходного сигнала – количество классов. Сформируйте обучающую и тестовую выборки достаточного объема. Продумайте 2-3 постановки задачи в зависимости от типа зашумления и искажения (равномерный шум, изменение масштаба, сдвиг, поворот).
+%2. Выполните исследования по аналогии с заданием 3. Приведите найденные наилучшие конфигурации нейронных сетей, параметров обучения, а также результаты обучения – матрицы неточностей, ошибки 1,2 рода.
+
+\subsection{Формирование обучающей и тестовой выборки}
+
+Сформируем обучающую и тестовую выборки на основе ранее созданных функций. На рис. \ref{fig:5_1_1} изображены примеры обучающей выборки.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=1]{5_1_1}
+	\caption{Исходные образы \code{P}}
+	\label{fig:5_1_1}
+\end{center}
+\end{figure}
+
+Сформируем зашумленные образы, повернутые на случайный угол и сдвинутые относительно исходных. На рис. \ref{fig:5_1_2} изображены примеры таких образов.
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{\textwidth}
+		\includegraphics[scale=1]{5_1_2}
+		\caption{Зашумленная выборка \code{P_noisy}}
+	\end{subfigure}
+	\begin{subfigure}[b]{\textwidth}
+		\includegraphics[scale=1]{5_1_3}
+		\caption{Повернутая выборка \code{P_rotate}}
+	\end{subfigure}
+	\begin{subfigure}[b]{\textwidth}
+		\includegraphics[scale=1]{5_1_4}
+		\caption{Сдвинутая выборка \code{P_shift}}
+	\end{subfigure}
+	\caption{Примеры разбиений}
+	\label{fig:5_1_2}
+\end{center}
+\end{figure}
+
+\subsection{Функция обучения и число скрытых нейронов}
+
+Для различных функций обучения (\code{trainlm}, \code{trainbfg}, \code{traingdx}, \code{traincgf}) было опредлено оптимальное количество нейронов в скрытом слое: \code{trainlm} -- 50 нейронов, \code{trainbfg}, \code{traingdx} и \code{traincgf} -- 100 нейронов. Исходная выборка была поделена в отношении $0.5 : 0.5$ на обучающую и тестовую. Для вычисления ошибки была использована тестовая выборка. На рис. \ref{fig:5_2_1} приведены матрицы неточностей, полученные после обучения этими методами.
+
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth]{5_2_1}
+		\caption{\code{trainlm}, err = 0.12}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth]{5_2_2}
+		\caption{\code{trainbfg}, err = 0.16}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth]{5_2_3}
+		\caption{\code{traingdx}, err = 0.19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=1\textwidth]{5_2_4}
+		\caption{\code{traincgf}, err = 0.15}
+	\end{subfigure}
+	\caption{Матрицы неточностей}
+	\label{fig:5_2_1}
+\end{center}
+\end{figure}
+
+\subsection{Функция производительности}
+
+Изменим выходной слой НС на \code{softmax}, функцию производительности на \code{crossentropy}, функцию обучения \code{trainscg}. Подберем оптимальное число нейронов в скрытом слое. На рис. \ref{fig:5_3_1} изображена зависимость ошибки от числа нейронов в скрытом слое.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.88]{5_3_1}
+	\caption{Зависимость ошибки от числа нейронов в скрытом слое}
+	\label{fig:5_3_1}
+\end{center}
+\end{figure}
+
+На рис. \ref{fig:5_3_2} изображена матрица неточностей при оптимальном числе нейронов, равном 50.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.7]{5_3_2}
+	\caption{Матрица неточностей, err = 0.041}
+	\label{fig:5_3_2}
+\end{center}
+\end{figure}
+
+\subsection{Передаточная функция выходного слоя}
+
+Для стандартной функции производительности \code{sse} будем изменять тип передаточной функции выходного слоя на \code{purelin}, \code{tansig} и \code{logsig}. В таблице \ref{fig:3_4} приведены сводные результаты для разных функции производительности.
+
+\begin{table}[H]
+\begin{center}
+	\def\tabcolsep{15pt}
+	\caption{Различные функции производительности}
+	\label{tab:3_4}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Функция & Нейроны & Ошибка & Число эпох \\
+		\hline
+		\hline
+		\code{purelin} & 100 & 1748 & 329 \\
+		\hline
+		\code{tansig} & 100 & 1194 & 230 \\
+		\hline
+		\code{softmax} & 50 & 1684 & 221 \\
+		\hline
+		\code{logsig} & 100 & 6507 & 176 \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}
+\vspace{-0.5cm}
+
+На рис. \ref{fig:3_4} приведены матрицы неточностей для разных функции производительности.
+\vspace{-0.5cm}
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{5_4_1}
+		\caption{\code{purelin}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{5_4_2}
+		\caption{\code{tansig}}
+	\end{subfigure}
+	\caption{Матрицы неточностей}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{5_4_3}
+		\caption{\code{softmax}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{5_4_4}
+		\caption{\code{logsig}}
+	\end{subfigure}
+	\caption{Матрицы неточностей}
+	\label{fig:4_4}
+\end{center}
+\end{figure}
+
+\subsection{Каскадная НСПР}
+
+Рассмотрим одну из полученных выше конфигураций НС и параметров. Изменим тип нейронной сети на каскадный. На рис. \ref{fig:4_5_1} приведена архитектура каскадной сети.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.6]{5_5_1}
+	\caption{Архитектура каскадной сети}
+	\label{fig:4_5_1}
+\end{center}
+\end{figure}
+
+\vspace{-0.5cm}
+На рис. \ref{fig:4_5_2} приведен пример разбиения плоскости на классы каскадной нейронной сетью после обучения. При этом ошибка \code{sse} на тестовой выборке оказалась равна $141$, что несколько лучше, чем результаты, полученные в предыдущем разделе. Обучение при этом заняло $710$ эпох.
+\vspace{-0.5cm}
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.8]{5_5_2}
+	\caption{Матрица неточностей, sse = 1252, mse = 0.07}
+	\label{fig:4_5_2}
+\end{center}
+\end{figure}
+\vspace{-1cm}
+
+\subsection{Зашумленные входные образы}
+
+С использованием алгоритмы \code{trainlm} (самый низкий процент ошибок в пункте 1) обучим нейронную сеть на исходных образах и проверим качество классификации зашумленных образов, повернутых образов на случайный угол и образов, сдвинутых относительно исходных. На рис. \ref{fig:5_6_1} приведены матрицы неточностей для искаженных выходных образов.
+\vspace{-0.3cm}
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.47\textwidth}
+		\includegraphics[width=\textwidth]{5_6_1}
+		\caption{Шум, err = 0.3}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.47\textwidth}
+		\includegraphics[width=\textwidth]{5_6_2}
+		\caption{Поворот, err = 0.67}
+	\end{subfigure}
+\end{center}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{5_6_3}
+		\caption*{(c) Сдвиг, err = 0.7}
+	\end{subfigure}
+	\caption{Матрицы неточностей}
+	\label{fig:5_6_1}
+\end{center}
+\end{figure}
+
+Как видно из результатов классификации, нейронная сеть оказалась очень чувствительна к поворотам и сдвигам изображения, в то время как даже зашумления не вызывали настолько сильного ухудшения классификации. 
+
 \section{Выводы}
 
-В данной работе были приобретены навыки построения и обучения линейных сетей для классификации сложных образов и линейной аппроксимации. Была изучена архитектура статических и динамических линейных нейронных сетей и специальных функций для их создания.
+В процессе выполнения данной работы были приобретены навыки построения и инициализации нейронных сетей прямого распространения. Рассмотрены различные функции обработки входных и выходных сигналов. Изучены различные функции расчета производительности НС и деления выборки. Получен опыт практического применения сетей прямого распространения и их обучения с использованием алгоритма обратного распространения ошибки.
 
 \end{document}

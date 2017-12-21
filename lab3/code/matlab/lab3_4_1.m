@@ -16,7 +16,7 @@ net = init_ff(P, Tvec, 10);
 net = train(net, P(trainIdx,:)', class2vec(T(trainIdx)));
 Yvec = sim(net, P(testIdx,:)');
 Y = vec2class(Yvec);
-err = perform(net, T(testIdx)', Y)
+err = calc_error(Y, T(testIdx)')
 
 plot_8_classes(P, sim(net, P'));
 
